@@ -1,0 +1,15 @@
+<div id="compass" class="rows text-center" style="margin-top:19px;">
+    <div id="compassdiv" class="label-text text-center"><h3 id="heading">未知</h3></div>
+    <span id="south" class="fa-stack" style="font-size:96px;">
+        <i class="fa fa-arrows fa-stack-2x fa-inverse"></i>
+        <i class="fa fa-long-arrow-down fa-stack-1x" style="margin-top:25%;color:#FF3366"></i>
+    </span>
+</div>
+<script>
+compassID = navigator.compass.watchHeading(function(heading){
+    $("#heading").text(heading.magneticHeading);
+    $("#south").css({"-webkit-transform":"rotate("+(-heading.magneticHeading)+"deg)","transform":"rotate("+(-heading.magneticHeading)+"deg)"});
+}, function(error){
+
+});
+</script>

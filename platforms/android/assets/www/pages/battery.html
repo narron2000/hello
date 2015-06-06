@@ -1,0 +1,19 @@
+<div id="battery" class="rows" style="margin-top:19px;">
+    <div id="batteryleveldiv" class="label-text text-center"><h3 id="batterylevel">未知</h3></div>
+    <div class="col-xs-2 col-xs-offset-5 text-center" style="border:1px #FFFFFF solid;height:20px;margin-top:10px;"></div>
+    <div class="col-xs-6 col-xs-offset-3 text-center" style="border:1px #FFFFFF solid;height:320px;margin-top:10px;">
+        <div style="height:280px;margin-top:20px;border:1px #EDEDED solid;">
+            <div id="levelempty" style="height:50%;"></div>
+            <div id="levelfull" style="height:50%;background-color:#0099FF"></div>
+        </div>
+    </div>
+</div>
+<script>
+$("#batteryleveldiv").css({"margin-top":($(window).height()-51-19-10-20-10-320-60)/2});
+window.addEventListener("batterystatus", onBatteryStatus, false);
+function onBatteryStatus(info) {
+    $("#batterylevel").text(info.level+"%");
+    $("#levelfull").css({"height":info.level+"%"});
+    $("#levelempty").css({"height":(100-info.level)+"%"});
+}
+</script>

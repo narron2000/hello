@@ -1,0 +1,80 @@
+<div id="network" class="rows" style="margin-top:19px;">
+    <div class="col-xs-3 text-center">
+        <p>
+            <span id="wifi" class="fa-stack fa-lg">
+                <i class="fa fa-wifi fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-question fa-stack-2x text-warning"></i>
+                <i class="fa fa-close fa-stack-2x text-highlight" style="display:none"></i>
+            </span>
+        </p>
+        <p><label class="label-text">WIFI</label></p>
+    </div>
+    <div class="col-xs-3 text-center">
+        <p>
+            <span id="c4g" class="fa-stack fa-lg">
+                <i class="fa fa-signal fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-question fa-stack-2x text-warning"></i>
+                <i class="fa fa-close fa-stack-2x text-highlight" style="display:none"></i>
+            </span>
+        </p>
+        <p><label class="label-text">4G</label></p>
+    </div>
+    <div class="col-xs-3 text-center">
+        <p>
+            <span id="c3g" class="fa-stack fa-lg">
+                <i class="fa fa-signal fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-question fa-stack-2x text-warning"></i>
+                <i class="fa fa-close fa-stack-2x text-highlight" style="display:none"></i>
+            </span>
+        </p>
+        <p><label class="label-text">3G</label></p>
+    </div>
+    <div class="col-xs-3 text-center">
+        <p>
+            <span id="c2g" class="fa-stack fa-lg">
+                <i class="fa fa-signal fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-question fa-stack-2x text-warning"></i>
+                <i class="fa fa-close fa-stack-2x text-highlight" style="display:none"></i>
+            </span>
+        </p>
+        <p><label class="label-text">2G</label></p>
+    </div>
+</div>
+<script>
+networkTimeID = setInterval("getNetworkState()",1000);
+function getNetworkState(){
+    var networkState = navigator.connection.type;
+    if (networkState==Connection.UNKNOWN){
+        $("#wifi,#c4g,#c3g,#c2g").children("*:nth-child(2)").show();
+        $("#wifi,#c4g,#c3g,#c2g").children("*:nth-child(3)").hide();
+    }
+    else if (networkState==Connection.WIFI){
+        $("#wifi").children("*:nth-child(2)").hide();
+        $("#wifi").children("*:nth-child(3)").hide();
+        $("#c4g,#c3g,#c2g").children("*:nth-child(2)").hide();
+        $("#c4g,#c3g,#c2g").children("*:nth-child(3)").show();
+    }
+    else if (networkState==Connection.CELL_4G){
+        $("#c4g").children("*:nth-child(2)").hide();
+        $("#c4g").children("*:nth-child(3)").hide();
+        $("#wifi,#c3g,#c2g").children("*:nth-child(2)").hide();
+        $("#wifi,#c3g,#c2g").children("*:nth-child(3)").show();
+    }
+    else if (networkState==Connection.CELL_3G){
+        $("#c3g").children("*:nth-child(2)").hide();
+        $("#c3g").children("*:nth-child(3)").hide();
+        $("#c4g,#wifi,#c2g").children("*:nth-child(2)").hide();
+        $("#c4g,#wifi,#c2g").children("*:nth-child(3)").show();
+    }
+    else if (networkState==Connection.CELL_2G){
+        $("#c2g").children("*:nth-child(2)").hide();
+        $("#c2g").children("*:nth-child(3)").hide();
+        $("#c4g,#c3g,#wifi").children("*:nth-child(2)").hide();
+        $("#c4g,#c3g,#wifi").children("*:nth-child(3)").show();
+    }
+    else if (networkState==Connection.NONE){
+        $("#wifi,#c4g,#c3g,#c2g").children("*:nth-child(2)").hide();
+        $("#wifi,#c4g,#c3g,#c2g").children("*:nth-child(3)").show();
+    }
+}
+</script>

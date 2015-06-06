@@ -1,0 +1,119 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html{
+    height:100%;
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    background-color:#0099FF;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.text-active {
+    color:#0099FF;
+}
+.text-sleep {
+    color:#C1C2C3;
+}
+.text-highlight {
+    color:#FF3366;
+}
+
+.btn-menu{
+    background-color:#F2F2F2;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+#container{
+    background-image:linear-gradient(top, #0099FF 0%, #E188E1 100%);
+    background-image:-webkit-linear-gradient(top, #0099FF 0%, #E188E1 100%);
+    background-image:-ms-linear-gradient(top, #0099FF 0%, #E188E1 100%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        right bottom,
+        color-stop(0, #0099FF),
+        color-stop(1, #E188E1)
+    );
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    z-index:100;
+    margin:0px;
+    padding:0px;
+}
+.bg{
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+}
+.w5{
+    width:500%;
+}
+.label-text{
+    color:#FFFFFF;
+    text-shadow:1px 1px 1px #444444;
+}
+.white-shadow{
+    text-shadow:0px 0px 2px #FFFFFF;
+}
+.scrolldiv{
+    margin-top:70px;
+    width:20%;
+}
+#contextdiv{
+    margin-top:51px;
+    padding:0px;
+    width:100%;
+}
+.linkdiv{
+    padding:0px;
+    color:#0099FF;
+}
+.windiv{
+    position:relative;
+    width:100%;
+    height:100%;
+    background-image:linear-gradient(top, #0099FF 0%, #E188E1 100%);
+    background-image:-webkit-linear-gradient(top, #0099FF 0%, #E188E1 100%);
+    background-image:-ms-linear-gradient(top, #0099FF 0%, #E188E1 100%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        right bottom,
+        color-stop(0, #0099FF),
+        color-stop(1, #E188E1)
+    );
+    overflow:hidden;
+    display:none;
+}

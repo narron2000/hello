@@ -1,0 +1,25 @@
+<div id="photo" class="rows" style="margin-top:19px;">
+    <div class="text-center">
+        <p><img id="photoimg" src=""></p>
+        <p>
+            <a id="takephoto" href="#" class="btn btn-lg" style="border-color:#FFFFFF">
+                <i class="fa fa-camera fa-inverse fa-fw"></i>
+                <span class="label-text">拍照</span>
+            </a>
+        </p>
+    </div>
+</div>
+<script>
+$("#photoimg").css({"width":windowWidth-19*2,"height":$(window).height()-51-19-70});
+$("#takephoto").unbind("click").bind("click",function(){
+    navigator.camera.getPicture(onLoadImageSuccess, onLoadImageFail, {destinationType: Camera.DestinationType.DATA_URL});
+});
+function onLoadImageSuccess(imageURI) {
+    var src = "data:image/jpeg;base64," + imageURI;
+    $("#photoimg").attr("src",src).show();
+}
+
+function onLoadImageFail(message) {
+    navigator.notification.alert("拍照失败，原因：" + message, null, "警告");
+}
+</script>

@@ -1,0 +1,15 @@
+<div id="gps" class="rows" style="margin-top:19px;">
+    <div class="text-center">
+        <label id="pt" class="label-text">暂无位置信息</label>
+    </div>
+</div>
+<script>
+navigator.geolocation.getCurrentPosition(function(position){
+    $("#pt").text(position.coords.latitude+","+position.coords.longitude);
+}, function(error){
+    if (error.code==2){
+        $("#pt").text("无法打开GPS服务");
+    }
+    alert(error.message);
+},{enableHighAccuracy:true});
+</script>

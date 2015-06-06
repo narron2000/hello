@@ -1,0 +1,35 @@
+<div id="chartbar" class="rows" style="margin-top:19px;">
+    <div class="text-center">
+        <canvas id="canvas"></canvas>
+    </div>
+</div>
+<script>
+$("#canvas").css({"width":windowWidth-19*2,"height":(windowWidth-19*2)*3/4});
+$.getScript("js/Chart.min.js",function(){
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+    var barChartData = {
+        labels : ["周一","周二","周三","周四","周五","周六","周日"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            },
+            {
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,0.8)",
+                highlightFill : "rgba(151,187,205,0.75)",
+                highlightStroke : "rgba(151,187,205,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            }
+        ]
+    }
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData, {
+        responsive:true,
+        scaleFontColor:"#FFFFFF"
+    });
+});
+</script>

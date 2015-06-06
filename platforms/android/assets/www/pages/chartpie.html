@@ -1,0 +1,45 @@
+<div id="chartbar" class="rows" style="margin-top:19px;">
+    <div class="text-center">
+        <canvas id="canvas"></canvas>
+    </div>
+</div>
+<script>
+$("#canvas").css({"width":windowWidth-19*2,"height":(windowWidth-19*2)*3/4});
+$.getScript("js/Chart.min.js",function(){
+    var pieData = [
+        {
+            value: 300,
+            color:"rgba(247,70,74,0.7)",
+            highlight: "rgba(247,70,74,1)",
+            label: "Red"
+        },
+        {
+            value: 50,
+            color: "rgba(70,191,189,0.7)",
+            highlight: "rgba(70,191,189,1)",
+            label: "Green"
+        },
+        {
+            value: 100,
+            color: "rgba(253,180,92,0.7)",
+            highlight: "rgba(253,180,92,1)",
+            label: "Yellow"
+        },
+        {
+            value: 40,
+            color: "rgba(148,159,177,0.7)",
+            highlight: "rgba(148,159,177,1)",
+            label: "Grey"
+        },
+        {
+            value: 120,
+            color: "rgba(77,83,96,0.7)",
+            highlight: "rgba(77,83,96,1)",
+            label: "Dark Grey"
+        }
+    ];
+
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myPie = new Chart(ctx).Pie(pieData);
+});
+</script>
